@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dice</title>
+    <style>
+  #winner{
+      height: 20px;
+      width: 200px;
+      border: 2px solid black;
+      margin: auto;
+  }
+  .container{
+      width: 100%;
+      height: 250px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+  }
+  .container div{
+      height: 80px;
+      width: 80px;
+      border: 2px solid blue;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      margin: auto;
+  }
+  body{
+    margin: auto;
+    text-align: center;
+  }
+
+    </style>
+</head>
+<body>
+    <div id="winner"></div>
+    <div class="container">
+    <div id="member-1"><h6>Member-A</h6></div>
+    <div id="member-2"><h6>Member-B</h6></div>
+    <div id="member-3"><h6>Member-C</h6></div>
+    </div>
+    <button id="roll">Roll the dice</button>
+</body>
+</html>
+<script>
+
+    document.querySelector("#roll").addEventListener("click",btnfunction)
+
+    function btnfunction(){
+        let x = Math.floor((Math.random() * 6) + 1);
+        var one= document.querySelector("#member-1").innerText=x
+        let y = Math.floor((Math.random() * 6) + 1);
+        var two= document.querySelector("#member-2").innerText=y
+        let z = Math.floor((Math.random() * 6) + 1);
+        var three= document.querySelector("#member-3").innerText=z
+        if(x===y===z){
+            document.querySelector("#member-1").style.backgroundColor ="blue"
+            document.querySelector("#member-2").style.backgroundColor ="blue"
+            document.querySelector("#member-3").style.backgroundColor ="blue"
+            document.querySelector("#winner").innerHTML= "Tie"
+        }
+        else if(x===y && z<x && z<y ){
+            document.querySelector("#member-1").style.backgroundColor ="blue"
+            document.querySelector("#member-2").style.backgroundColor ="blue"
+            document.querySelector("#member-3").style.backgroundColor ="red"
+            document.querySelector("#winner").innerHTML= "Tie"
+        }
+        else if(y===z && x<y && x<z ){
+            document.querySelector("#member-2").style.backgroundColor ="blue"
+            document.querySelector("#member-3").style.backgroundColor ="blue"
+            document.querySelector("#member-1").style.backgroundColor ="red"
+            document.querySelector("#winner").innerHTML= "Tie"
+        }
+        else if(x===z && y<x && y<z ){
+            document.querySelector("#member-1").style.backgroundColor ="blue"
+            document.querySelector("#member-3").style.backgroundColor ="blue"
+            document.querySelector("#member-2").style.backgroundColor ="red"
+            document.querySelector("#winner").innerHTML= "Tie"
+        }
+       else if(x===y){
+            document.querySelector("#member-1").style.backgroundColor ="blue"
+            document.querySelector("#member-2").style.backgroundColor ="blue"
+            document.querySelector("#winner").innerHTML= "Tie"
+        }
+        else if(y===z){
+            document.querySelector("#member-2").style.backgroundColor ="blue"
+            document.querySelector("#member-3").style.backgroundColor ="blue"
+            document.querySelector("#winner").innerHTML= "Tie"
+        }
+        else if(x===z){
+            document.querySelector("#member-1").style.backgroundColor ="blue"
+            document.querySelector("#member-3").style.backgroundColor ="blue"
+            document.querySelector("#winner").innerHTML= "Tie"
+        }
+        if(x>y && x>z){
+            document.querySelector("#winner").innerHTML= "Member-A is winner"
+            document.querySelector("#member-1").style.backgroundColor = "green";
+            if(y>z){
+            document.querySelector("#member-2").style.backgroundColor = "yellow"
+            document.querySelector("#member-3").style.backgroundColor = "red"
+            }
+            else if(z>y){
+                document.querySelector("#member-3").style.backgroundColor = "yellow"
+                document.querySelector("#member-2").style.backgroundColor = "red"
+            }
+        }
+        if(y>x && y>z){
+            document.querySelector("#winner").innerHTML= "Member-B is winner"
+            document.querySelector("#member-2").style.backgroundColor = "green";
+            if(x>z){
+                console.log("y bda h")
+            document.querySelector("#member-1").style.backgroundColor = "yellow"
+            document.querySelector("#member-3").style.backgroundColor = "red"
+            }
+            else if(z>x){
+                document.querySelector("#member-3").style.backgroundColor = "yellow"
+                document.querySelector("#member-1").style.backgroundColor = "red"
+            }
+        }
+        if(z>y && z>x){
+            document.querySelector("#winner").innerHTML= "Member-c is winner"
+            document.querySelector("#member-3").style.backgroundColor = "green";
+            if(y>x){
+                console.log("y bda h")
+            document.querySelector("#member-2").style.backgroundColor = "yellow"
+            document.querySelector("#member-1").style.backgroundColor = "red"
+            }
+            else if(x>y){
+                document.querySelector("#member-1").style.backgroundColor = "yellow"
+                document.querySelector("#member-2").style.backgroundColor = "red"
+            }
+        }
+    }
+</script>
